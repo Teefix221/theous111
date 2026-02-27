@@ -3,104 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom.Team</title>
+    <title>THEOUS Team</title>
     <style>
-        /* Общие настройки и скролл */
+        /* ================= СБРОС И ОБЩИЕ СТИЛИ ================= */
         html { scroll-behavior: smooth; }
-        body {
-            background-color: #1e232a;
-            color: #a6acb3;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+        body { background-color: #1e232a; color: #a6acb3; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; }
 
-        /* Навигация */
-        nav {
-            background-color: #2b323c;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 15px 0;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-        nav a {
-            color: #e5e5e5;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        nav a:hover { color: #2ecc71; }
+        /* ================= НАВИГАЦИЯ ================= */
+        nav { background-color: #22272e; position: fixed; top: 0; width: 100%; display: flex; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 1000; border-bottom: 1px solid #1a1e24; }
+        nav a { color: #8c95a0; text-decoration: none; padding: 15px 25px; font-size: 15px; font-weight: bold; border-right: 1px solid #3b4452; transition: background-color 0.2s, color 0.2s; }
+        nav a:first-child { border-left: 1px solid #3b4452; }
+        nav a:hover { background-color: #2b323c; color: #e5e5e5; }
 
-        /* Секции */
-        section {
-            min-height: 100vh;
-            padding-top: 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        /* ================= СЕКЦИИ ================= */
+        section { min-height: 100vh; padding-top: 80px; display: flex; flex-direction: column; align-items: center; }
         h1, h2 { color: #e5e5e5; margin-bottom: 30px; }
-        #home { background-color: #1e232a; justify-content: center; }
-        #roster { background-color: #1a1e24; }
-        #matches { background-color: #1e232a; }
+        #home { background: linear-gradient(135deg, #1e232a 0%, #11151a 100%); justify-content: center; text-align: center; }
+        #roster, #stats, #matches { background-color: #1a1e24; padding-bottom: 50px; }
+        #stats { background-color: #1e232a; }
 
-        /* Стили таблицы (из предыдущего шага) */
-        .table-container {
-            background-color: #2b323c;
-            border-radius: 4px;
-            overflow: hidden;
-            width: 800px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            margin-bottom: 50px;
-        }
-        .header-title {
-            background-color: #2b323c;
-            padding: 15px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #8c95a0;
-            border-bottom: 1px solid #1e232a;
-        }
+        /* ================= ГЛАВНАЯ СТРАНИЦА ================= */
+        .main-title{ font-size: 120px; font-weight: 900; margin: 0; letter-spacing: 3px; text-transform: uppercase; background: -webkit-linear-gradient(#2ecc71, #1abc9c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .philosophy { margin: 20px 0 40px; font-size: 20px; color: #a6acb3; line-height: 1.6; }
+        .philosophy p { margin: 5px 0; }
+        .punchline { color: #e5e5e5; font-weight: bold; font-size: 22px; margin-top: 20px; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2); border-left: 4px solid #e74c3c; padding-left: 15px; text-align: left; display: inline-block; }
+        .btn { display: inline-block; padding: 15px 35px; margin: 0 10px; font-size: 16px; font-weight: bold; text-transform: uppercase; text-decoration: none; border-radius: 5px; transition: all 0.3s ease; }
+        .btn-primary { background-color: #2ecc71; color: #11151a; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); }
+        .btn-primary:hover { background-color: #27ae60; transform: translateY(-3px); }
+        .btn-secondary { background-color: transparent; color: #e5e5e5; border: 2px solid #4b627a; }
+        .btn-secondary:hover { background-color: #4b627a; transform: translateY(-3px); }
+
+        /* ================= КАРТОЧКИ ИГРОКОВ ================= */
+        .roster-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+        .player-card { background-color: #2b323c; border-radius: 8px; overflow: hidden; width: 220px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transition: transform 0.3s ease; text-align: center; }
+        .player-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3); border-bottom: 3px solid #e74c3c; }
+        .player-photo { width: 100%; height: 220px; object-fit: cover; background-color: #1e232a; border-bottom: 2px solid #1e232a; }
+        .player-info { padding: 20px; }
+        .player-info h3 { margin: 0 0 10px 0; color: #e5e5e5; font-size: 22px; }
+        .player-role { display: inline-block; background-color: #4b627a; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-bottom: 15px; text-transform: uppercase; }
+        .player-desc { font-size: 13px; color: #a6acb3; line-height: 1.5; margin: 0; }
+
+        /* ================= СТАТИСТИКА ================= */
+        .stats-wrapper { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1300px; margin: 0 auto; align-items: flex-start; }
+        .table-container { background-color: #2b323c; border-radius: 4px; overflow: hidden; width: 700px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .header-title { background-color: #2b323c; padding: 15px 20px; font-size: 18px; font-weight: bold; color: #8c95a0; border-bottom: 1px solid #1e232a; }
         table { width: 100%; border-collapse: collapse; }
-        th {
-            text-align: center;
-            padding: 15px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            border-bottom: 2px solid #1e232a;
-        }
+        th { text-align: center; padding: 15px 20px; font-size: 14px; font-weight: 600; border-bottom: 2px solid #1e232a; }
         th:first-child { text-align: left; }
-        td {
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 15px;
-            border-bottom: 1px solid #3b4452;
-        }
-        td.player-col {
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: #e5e5e5;
-            font-weight: bold;
-        }
+        td { padding: 10px 20px; text-align: center; font-size: 15px; border-bottom: 1px solid #3b4452; }
+        td.player-col { text-align: left; display: flex; align-items: center; gap: 15px; color: #e5e5e5; font-weight: bold; }
         .player-img { width: 50px; height: 50px; object-fit: contain; }
-        .status-badge {
-            background-color: #4b627a;
-            color: #e5e5e5;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            display: inline-block;
-        }
+        .status-badge { background-color: #4b627a; color: #e5e5e5; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; }
         .rating-green { color: #2ecc71; font-weight: bold; }
         .rating-red { color: #e74c3c; font-weight: bold; }
+
+        .hltv-map-pool { width: 100%; max-width: 450px; background-color: #2b323c; padding: 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .hltv-map-pool h3 { color: #8c95a0; font-size: 14px; margin-top: 0; margin-bottom: 20px; font-weight: normal; }
+        .hltv-map-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; background-color: #22272e; padding: 5px 10px 5px 5px; border-radius: 4px; }
+        .hltv-map-bar { width: 250px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 3px; color: #ffffff; font-weight: bold; font-size: 14px; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .bg-mirage { background: linear-gradient(90deg, #4b367c, #8e44ad, #4b367c); }
+        .bg-nuke { background: linear-gradient(90deg, #4a2323, #c0392b, #4a2323); }
+        .bg-overpass { background: linear-gradient(90deg, #5c3a21, #d35400, #5c3a21); }
+        .bg-dust2 { background: linear-gradient(90deg, #5c5a21, #f1c40f, #5c5a21); }
+        .bg-inferno { background: linear-gradient(90deg, #21365c, #2980b9, #21365c); }
+        .bg-ancient { background: linear-gradient(90deg, #1e4532, #27ae60, #1e4532); }
+        .bg-anubis { background: linear-gradient(90deg, #5c1e3d, #9b59b6, #5c1e3d); }
+        .hltv-map-percent { color: #a6acb3; font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
+        .hltv-arrow { font-size: 10px; color: #5c6670; }
+
+        /* ================= ИСТОРИЯ МАТЧЕЙ ================= */
+        .matches-section-container { width: 100%; max-width: 800px; margin: 0 auto; }
+        .match-stats-summary { margin-bottom: 30px; }
+        .match-stats-summary h3 { color: #8c95a0; font-size: 16px; margin-bottom: 10px; text-align: left; }
+        .stats-box { display: flex; border: 1px solid #3b4452; border-radius: 4px; background-color: #22272e; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .stat-item { flex: 1; padding: 25px; text-align: center; position: relative; }
+        .border-right { border-right: 1px solid #3b4452; }
+        .stat-value { color: #e5e5e5; font-size: 28px; font-weight: bold; margin-bottom: 5px; }
+        .stat-label { color: #8c95a0; font-size: 13px; }
+        .stat-period { position: absolute; top: 10px; right: 15px; color: #8c95a0; font-size: 11px; }
+
+        .matches-list { display: flex; flex-direction: column; gap: 8px; }
+        .match-row { display: flex; align-items: center; justify-content: space-between; background-color: #22272e; padding: 12px 20px; border-radius: 4px; transition: background-color 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.2); border: 1px solid transparent; }
+        .match-row:hover { background-color: #2b323c; border: 1px solid #3b4452; }
+        .match-date { color: #5c6670; font-size: 14px; width: 100px; }
+        .match-teams { display: flex; align-items: center; gap: 15px; flex: 1; justify-content: center; }
+        .team-name { color: #8c95a0; font-size: 15px; font-weight: bold; width: 120px; text-align: right; }
+        .team-name.enemy { text-align: left; }
+        .team-logo { font-size: 20px; display: flex; align-items: center; justify-content: center; width: 25px; height: 25px;}
+        .match-score { color: #e5e5e5; font-size: 18px; font-weight: bold; margin: 0 5px; }
+        
+        .match-link-btn { background-color: #3b4c61; color: #fff; text-decoration: none; padding: 8px 18px; border-radius: 4px; font-size: 13px; font-weight: bold; transition: background 0.2s; border: none; cursor: pointer; }
+        .match-link-btn:hover { background-color: #4b627a; }
+
+        /* ================= МОДАЛЬНЫЕ ОКНА ================= */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background-color: #1a1e24; width: 90%; max-width: 900px; border-radius: 12px; border: 1px solid #3b4452; box-shadow: 0 10px 40px rgba(0,0,0,0.8); position: relative; overflow: hidden; }
+        .modal-close { position: absolute; top: 15px; right: 20px; color: #8c95a0; font-size: 28px; font-weight: bold; cursor: pointer; transition: color 0.2s; }
+        .modal-close:hover { color: #fff; }
+        
+        .modal-header { background-color: #22272e; padding: 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #3b4452; }
+        .modal-team { display: flex; align-items: center; gap: 15px; width: 30%; }
+        .modal-team.right { justify-content: flex-end; }
+        .modal-team h3 { margin: 0; color: #e5e5e5; font-size: 18px; }
+        .modal-score { font-size: 32px; font-weight: bold; }
+        .score-red { color: #e74c3c; }
+        .score-green { color: #2ecc71; }
+        
+        .modal-center-info { text-align: center; color: #8c95a0; font-size: 13px; width: 40%; }
+        .modal-center-info strong { color: #e5e5e5; font-size: 16px; display: block; margin-bottom: 5px; }
+        .faceit-btn-inside { display: inline-block; margin-top: 10px; background-color: #ff5500; color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+        .faceit-btn-inside:hover { background-color: #e64d00; }
+
+        .modal-body { display: flex; background-color: #15191e; }
+        .team-roster { flex: 1; padding: 20px; border-right: 1px solid #22272e; }
+        .team-roster:last-child { border-right: none; }
+        
+        .roster-player { display: flex; align-items: center; justify-content: space-between; background-color: #22272e; padding: 10px 15px; border-radius: 6px; margin-bottom: 8px; }
+        .player-left-side { display: flex; align-items: center; gap: 12px; }
+        .modal-avatar { width: 30px; height: 30px; border-radius: 50%; background-color: #3b4452; }
+        .modal-nickname { color: #e5e5e5; font-weight: bold; font-size: 14px; }
+        .player-right-side { display: flex; align-items: center; gap: 10px; }
+        
+        .faceit-lvl { background-color: #e67e22; color: #fff; border-radius: 50%; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; }
+        .lvl-red { background-color: #e74c3c; } /* 10 level */
+        .lvl-yellow { background-color: #f1c40f; } /* 4-7 levels */
+        .player-elo { color: #a6acb3; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -108,89 +135,355 @@
     <nav>
         <a href="#home">Главная</a>
         <a href="#roster">Состав команды</a>
+        <a href="#stats">Статистика</a>
         <a href="#matches">Матчи</a>
     </nav>
 
     <section id="home">
-        <h1>Добро пожаловать в Custom.Team</h1>
-        <p>Лучшая команда в дисциплине.</p>
+        <h1 class="main-title">THEOUS</h1>
+        <div class="philosophy">
+            <p>Они смотрят демки — мы тренируем стрельбу.</p>
+            <p>Они подстраивают тактики — мы сидим играем 2 на 2.</p>
+            <p class="punchline">Это Counter-Strike. Неважно, куда ты идешь, если отлетаешь с первой пули.</p>
+        </div>
+        <div>
+            <a href="#roster" class="btn btn-primary">Смотреть состав</a>
+            <a href="#matches" class="btn btn-secondary">История матчей</a>
+        </div>
     </section>
 
     <section id="roster">
         <h2>Наш состав</h2>
-        
-        <div class="table-container">
-            <div class="header-title">Players of Custom.Team</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th>Status</th>
-                        <th>Time on team</th>
-                        <th>Maps played</th>
-                        <th>Rating 3.0</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="player-col">
-                            <img src="image_27f05e.png" alt="silhouette" class="player-img">
-                            -teefix
-                        </td>
-                        <td><span class="status-badge">STARTER</span></td>
-                        <td>1 month</td>
-                        <td>9</td>
-                        <td class="rating-green">1.16</td>
-                    </tr>
-                    <tr>
-                        <td class="player-col">
-                            <img src="image_27f05e.png" alt="silhouette" class="player-img">
-                            m3ely
-                        </td>
-                        <td><span class="status-badge">STARTER</span></td>
-                        <td>1 month</td>
-                        <td>9</td>
-                        <td class="rating-green">1.02</td>
-                    </tr>
-                    <tr>
-                        <td class="player-col">
-                            <img src="image_27f05e.png" alt="silhouette" class="player-img">
-                            AcTuGmAtU3M
-                        </td>
-                        <td><span class="status-badge">STARTER</span></td>
-                        <td>1 month</td>
-                        <td>9</td>
-                        <td class="rating-red">0.84</td>
-                    </tr>
-                    <tr>
-                        <td class="player-col">
-                            <img src="image_27f05e.png" alt="silhouette" class="player-img">
-                            _loris-
-                        </td>
-                        <td><span class="status-badge">STARTER</span></td>
-                        <td>1 month</td>
-                        <td>9</td>
-                        <td class="rating-red">0.80</td>
-                    </tr>
-                    <tr>
-                        <td class="player-col">
-                            <img src="image_27f05e.png" alt="silhouette" class="player-img">
-                            vsegdavru
-                        </td>
-                        <td><span class="status-badge">STARTER</span></td>
-                        <td>1 month</td>
-                        <td>9</td>
-                        <td class="rating-red">0.90</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="roster-grid">
+            <div class="player-card"><img src="avatar.png" class="player-photo"><div class="player-info"><h3>-teefix</h3><span class="player-role">Entry-rifler</span><p class="player-desc">Однажду прем гули сказали: "Чо инсту в окно давать?" другой гуль  на это сказал " Конечно давай, как без инсты мидл играть" Kyousuke сидел и наблюдал за этим пиздецом</p></div></div>
+            <div class="player-card"><img src="avatar.png" class="player-photo"><div class="player-info"><h3>m3ely</h3><span class="player-role">Rifler</span></div></div>
+            <div class="player-card"><img src="avatar.png" class="player-photo"><div class="player-info"><h3>AcTuGmAtU3M</h3><span class="player-role">Support/Lurker</span></div></div>
+            <div class="player-card"><img src="avatar.png" class="player-photo"><div class="player-info"><h3>_loris-</h3><span class="player-role">Sniper</span></div></div>
+            <div class="player-card"><img src="avatar.png" class="player-photo"><div class="player-info"><h3>vsegdavru</h3><span class="player-role">IGL</span><p class="player-desc">В этом мире, везде, где есть свет, всегда будет и тьма. До тех пор, пока существуют "победители", будут и "проигравшие".</p></div></div>
+        </div>
+    </section>
+
+    <section id="stats">
+        <h2>Статистика команды</h2>
+        <div class="stats-wrapper">
+            <div class="table-container">
+                <div class="header-title">Рейтинг игроков (Последний месяц)</div>
+                <table>
+                    <thead><tr><th>Player</th><th>Status</th><th>Maps played</th><th>Rating 2.0</th></tr></thead>
+                    <tbody>
+                        <tr><td class="player-col"><img src="avatar.png" class="player-img">-teefix</td><td><span class="status-badge">STARTER</span></td><td>9</td><td class="rating-green">1.16</td></tr>
+                        <tr><td class="player-col"><img src="avatar.png" class="player-img">m3ely</td><td><span class="status-badge">STARTER</span></td><td>9</td><td class="rating-green">1.02</td></tr>
+                        <tr><td class="player-col"><img src="avatar.png" class="player-img">vsegdavru</td><td><span class="status-badge">STARTER</span></td><td>9</td><td class="rating-red">0.90</td></tr>
+                        <tr><td class="player-col"><img src="avatar.png" class="player-img">AcTuGmAtU3M</td><td><span class="status-badge">STARTER</span></td><td>9</td><td class="rating-red">0.84</td></tr>
+                        <tr><td class="player-col"><img src="avatar.png" class="player-img">_loris-</td><td><span class="status-badge">STARTER</span></td><td>9</td><td class="rating-red">0.80</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="hltv-map-pool">
+                <h3>Map win statistics past 3 months</h3>
+                <div class="hltv-map-row"><div class="hltv-map-bar bg-nuke">Nuke</div><div class="hltv-map-percent">0% <span class="hltv-arrow">▼</span></div></div>
+                <div class="hltv-map-row"><div class="hltv-map-bar bg-anubis">Anubis</div><div class="hltv-map-percent">50.0% <span class="hltv-arrow">▼</span></div></div>
+                <div class="hltv-map-row"><div class="hltv-map-bar bg-overpass">Overpass</div><div class="hltv-map-percent">0% <span class="hltv-arrow">▼</span></div></div>
+                <div class="hltv-map-row"><div class="hltv-map-bar bg-dust2">Dust2</div><div class="hltv-map-percent">0% <span class="hltv-arrow">▼</span></div></div>
+                <div class="hltv-map-row"><div class="hltv-map-bar bg-inferno">Inferno</div><div class="hltv-map-percent">0% <span class="hltv-arrow">▼</span></div></div>
+                <div class="hltv-map-row"><div class="hltv-map-bar bg-ancient">Ancient</div><div class="hltv-map-percent">100% <span class="hltv-arrow">▼</span></div></div>
+                <div class="hltv-map-row"><div class="hltv-map-bar bg-mirage">Mirage</div><div class="hltv-map-percent">20.0% <span class="hltv-arrow">▼</span></div></div>
+            </div>
         </div>
     </section>
 
     <section id="matches">
         <h2>История матчей</h2>
-        <p>Здесь скоро появится статистика последних игр.</p>
+        <div class="matches-section-container">
+            <div class="match-stats-summary">
+                <h3>Match stats for THEOUS</h3>
+                <div class="stats-box">
+                    <div class="stat-item border-right"><div class="stat-value">0</div><div class="stat-label">Current win streak</div></div>
+                    <div class="stat-item"><span class="stat-period">Last 3 months</span><div class="stat-value">33.3%</div><div class="stat-label">Win rate</div></div>
+                </div>
+            </div>
+
+            <div class="matches-list">
+                <div class="match-row"><div class="match-date">26/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">10 : 13</span><span class="team-logo">⚪</span><span class="team-name enemy">team_Poks_</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch1')">Stats</button></div>
+                <div class="match-row"><div class="match-date">26/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">6 : 13</span><span class="team-logo">🦅</span><span class="team-name enemy">team_DieanoTHERDA</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch2')">Stats</button></div>
+                <div class="match-row"><div class="match-date">26/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">8 : 13</span><span class="team-logo">🐺</span><span class="team-name enemy">team_DieanoTHERDA</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch3')">Stats</button></div>
+                <div class="match-row"><div class="match-date">14/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">9 : 13</span><span class="team-logo">🐻</span><span class="team-name enemy">team_L4CKo7474</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch4')">Stats</button></div>
+                <div class="match-row"><div class="match-date">13/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">13 : 11</span><span class="team-logo">🐻</span><span class="team-name enemy">team_Susibadyk</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch5')">Stats</button></div>
+                <div class="match-row"><div class="match-date">06/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">19 : 17</span><span class="team-logo">🐻</span><span class="team-name enemy">team_TiBoM</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch6')">Stats</button></div>
+                <div class="match-row"><div class="match-date">06/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">13 : 1</span><span class="team-logo">🐻</span><span class="team-name enemy">team_Ramon2003</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch7')">Stats</button></div>
+                <div class="match-row"><div class="match-date">05/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">12 : 16</span><span class="team-logo">🐻</span><span class="team-name enemy">team_reflekt1ve</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch8')">Stats</button></div>
+                <div class="match-row"><div class="match-date">05/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">13 : 4</span><span class="team-logo">🐻</span><span class="team-name enemy">team_Luxo-_</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch9')">Stats</button></div>
+                <div class="match-row"><div class="match-date">01/02/2026</div><div class="match-teams"><span class="team-name">THEOUS</span><span class="team-logo">🟢</span><span class="match-score">6 : 13</span><span class="team-logo">🐻</span><span class="team-name enemy">team_walkedlaw</span></div><button class="match-link-btn" onclick="openMatchModal('modalMatch10')">Stats</button></div>
+            </div>
+        </div>
     </section>
+
+    <div id="modalMatch1" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch1')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-red">10</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Mirage<br>Feb 26, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-9819a754-ed62-422d-ac75-8e1e41ac4427/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-green">13</span><h3>team_Poks_</h3><div class="team-logo">⚪</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1887 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2009 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1798 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1740 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1968 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Poks_</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2265 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">D4N-DADDY</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1827 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">fimaaa</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1771 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">FeniKss-</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1603 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Sne4kyy6</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1837 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch2" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch2')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-red">6</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Anubis<br>Feb 26, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-37635706-257a-47f2-95c3-47ee792e7bd8/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-green">13</span><h3>team_Dieano...</h3><div class="team-logo">🦅</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1909 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2033 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1824 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1766 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1991 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">DieanoTHERDA</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1816 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">HRNom...</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2411 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-Neme...</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1891 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">e-star</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1613 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">CassSH</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2058 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch3" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch3')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-red">8</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Anubis<br>Feb 26, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-64674413-8883-46e3-9a58-14dfcbd71eda/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-green">13</span><h3>team_Dieano...</h3><div class="team-logo">🐺</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1936 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2058 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1849 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1792 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2016 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">DieanoTHERDA</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1790 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">HRNom...</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2394 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-Neme...</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1864 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">e-star</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1584 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">CassSH</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2041 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch4" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch4')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-red">9</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Mirage<br>Feb 14, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-b9f01a7b-dd32-4fd0-8a63-b2764720afa5/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-green">13</span><h3>team_L4CKo...</h3><div class="team-logo">🐻</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1821 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2170 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1961 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1675 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1943 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">L4CKo7474</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2043 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_Huginho_</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1897 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Kixler</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2202 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_Lukk...</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2319 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Rik0o0</span></div><div class="player-right-side"><span class="faceit-lvl lvl-yellow">7</span><span class="player-elo">1433 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch5" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch5')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-green">13</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Anubis<br>Feb 13, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-9d0db31b-6733-46a1-8906-d3cf4956e015/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-red">11</span><h3>team_Susiba...</h3><div class="team-logo">🐻</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1797 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2060 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1935 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1652 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1972 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Susibadyk</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2069 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Spurdulas</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2099 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">BigBlackC...</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1711 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Domas_62</span></div><div class="player-right-side"><span class="faceit-lvl lvl-yellow">7</span><span class="player-elo">1356 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">dZIKIY</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2127 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch6" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch6')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-green">19</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Anubis<br>Feb 06, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-b41137e3-05c2-425f-a3cc-ead3b51384fc/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-red">17</span><h3>team_TiBoM</h3><div class="team-logo">🐻</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1744 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2131 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1776 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1573 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2098 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">TiBoM</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2253 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">ZPFR_Kh...</span></div><div class="player-right-side"><span class="faceit-lvl lvl-yellow">7</span><span class="player-elo">1378 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Riwaan</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1672 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Friz0_</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2312 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">squizrael</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1589 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch7" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch7')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-green">13</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Mirage<br>Feb 06, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-81a7bc78-a05c-468b-b4eb-ab1fc76451e5/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-red">1</span><h3>team_Ramon...</h3><div class="team-logo">🐻</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1715 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2108 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1747 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1542 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2075 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Ramon2003</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1719 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">MurderMee</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2368 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">T_ULTIMATE</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1788 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">TashiiV</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1559 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Roby151</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1894 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch8" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch8')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-red">12</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Mirage<br>Feb 05, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-f0d3f087-16e5-4e85-af18-c7427eac8dfb/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-green">16</span><h3>team_reflekt1ve</h3><div class="team-logo">🐻</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1741 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2130 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1800 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1536 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2097 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">reflekt1ve</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1807 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">panic-</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2003 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-CUPR...</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1670 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">LIPIK</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1860 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">SpeeedBoy</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1801 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch9" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch9')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-green">13</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Ancient<br>Feb 05, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-c8069ffe-dc90-4805-af69-d9c4108a2d40/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-red">4</span><h3>team_Luxo-_</h3><div class="team-logo">🐻</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1712 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2108 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1774 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl lvl-yellow">7</span><span class="player-elo">1513 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2075 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Luxo-_</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2131 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">tomasko71</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1887 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-daviii...</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1919 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">kubco3</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1772 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Repar...</span></div><div class="player-right-side"><span class="faceit-lvl lvl-yellow">7</span><span class="player-elo">1476 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMatch10" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close" onclick="closeMatchModal('modalMatch10')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-team"><img src="avatar.png" class="modal-avatar"><h3>THEOUS</h3><span class="modal-score score-red">6</span></div>
+                <div class="modal-center-info"><strong>CS2 5v5 EU</strong>Mirage<br>Feb 01, 2026<br><a href="https://www.faceit.com/ru/cs2/room/1-86934619-d438-4278-b156-95a40725d130/scoreboard" target="_blank" class="faceit-btn-inside">FACEIT Matchroom</a></div>
+                <div class="modal-team right"><span class="modal-score score-green">13</span><h3>team_walked...</h3><div class="team-logo">🐻</div></div>
+            </div>
+            <div class="modal-body">
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">AcTuGmAtU3M</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1764 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">_loris-</span></div><div class="player-right-side"><span class="faceit-lvl lvl-yellow">7</span><span class="player-elo">1461 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">m3ely</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2046 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">vsegdavru</span></div><div class="player-right-side"><span class="faceit-lvl">8</span><span class="player-elo">1676 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-teefix</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2059 ELO</span></div></div>
+                </div>
+                <div class="team-roster">
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">walkedlaw</span></div><div class="player-right-side"><span class="faceit-lvl lvl-red">10</span><span class="player-elo">2073 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Shmit...</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1935 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">Danke...</span></div><div class="player-right-side"><span class="faceit-lvl lvl-yellow">7</span><span class="player-elo">1447 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">SINCLAIR420</span></div><div class="player-right-side"><span class="faceit-lvl lvl-yellow">7</span><span class="player-elo">1511 ELO</span></div></div>
+                    <div class="roster-player"><div class="player-left-side"><img src="avatar.png" class="modal-avatar"><span class="modal-nickname">-kapa</span></div><div class="player-right-side"><span class="faceit-lvl">9</span><span class="player-elo">1903 ELO</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openMatchModal(modalId) { document.getElementById(modalId).style.display = 'flex'; }
+        function closeMatchModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
+        window.onclick = function(event) { if (event.target.classList.contains('modal-overlay')) { event.target.style.display = "none"; } }
+    </script>
 
 </body>
 </html>
